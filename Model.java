@@ -234,7 +234,8 @@ public class Model {
 		
 	}
 	
-	/*double[][] matrix = {{1, 2, 3},{4, 5, 6}, {7, 8, 9}};
+	/*error
+	double[][] matrix = {{1, 2, 3},{4, 5, 6}, {7, 8, 9}};
 
 	for(int i = 0; i < matrix.length; i++)
 	{
@@ -262,8 +263,9 @@ public class Model {
 	}
 
 	m.writeImage(newImage, "GetGudBlur", "jpg"); */
-	
-	/*for(int i = 0; i < w; i++){
+
+	/* error
+	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
 			Color color1 = new Color(imagen.getRGB(i-1, j-1));
 			Color color2 = new Color(imagen.getRGB(i, j));
