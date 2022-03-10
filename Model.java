@@ -233,7 +233,36 @@ public class Model {
 	m.writeImage(newImage, "GetGudNegative", "jpg");
 		
 	}
+	
+	/*double[][] matrix = {{1, 2, 3},{4, 5, 6}, {7, 8, 9}};
 
+	for(int i = 0; i < matrix.length; i++)
+	{
+		for(int j = 0; j < matrix.length; j++)
+		{
+			System.out.println(matrix[i][j]);
+		}
+	}
+
+	for(int i = 0; i < w; i++){
+		for(int j = 0; j < h; j++){
+			
+			
+			for(int x = 0; x < matrix.length; x++)
+			{
+				for(int y = 0; y < matrix.length; y++)
+				{
+					System.out.println(matrix[x][y]);
+					Color color1 = new Color(imagen.getRGB(i+(x-1), j+(y-1)));
+				}
+			}
+			newImage.setRGB(i,j, new Color(x,y).getRGB());
+		}
+
+	}
+
+	m.writeImage(newImage, "GetGudBlur", "jpg"); */
+	
 	/*for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
 			Color color1 = new Color(imagen.getRGB(i-1, j-1));
