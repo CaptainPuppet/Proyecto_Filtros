@@ -234,10 +234,66 @@ public class Model {
 		
 	}
 
-	
+	/*for(int i = 0; i < w; i++){
+		for(int j = 0; j < h; j++){
+			Color color1 = new Color(imagen.getRGB(i-1, j-1));
+			Color color2 = new Color(imagen.getRGB(i, j));
+			Color color3 = new Color(imagen.getRGB(i+1, j+1));
+			double[][] matrix = {{0f, 0.2f, 0f},{0.2f, 0.2f, 0.2f}, {0f, 0.2f, 0f}};
 
-	
-    }
+			int red1 = color1.getRed();
+			int red2 = color2.getRed();
+			int red3 = color3.getRed();
+			
+			float redPerArray1 = matrix[0][1] * red1;
+			float redPerArray2 = matrix[0][2] * red1;
+			float redPerArray3 = matrix[0][3] * red1;
+			float redPerArray4 = matrix[1][1] * red2;
+			float redPerArray5 = matrix[1][2] * red2;
+			float redPerArray6 = matrix[1][3] * red2;				
+			float redPerArray7 = matrix[2][1] * red3;
+			float redPerArray8 = matrix[2][2] * red3;
+			float redPerArray9 = matrix[2][3] * red3;
+
+			float resultRed = redPerArray1 + redPerArray2 + redPerArray3 + redPerArray4 + redPerArray5 + redPerArray6 + redPerArray7 + redPerArray8 + redPerArray9;
+			int totalRed = (int)resultRed;
+
+			int green1 = color1.getGreen();
+			int green2 = color2.getGreen();
+			int green3 = color3.getGreen();
+			float greenPerArray1 = matrix[0][1] * green1;
+			float greenPerArray2 = matrix[0][2] * green1;
+			float greenPerArray3 = matrix[0][3] * green1;
+			float greenPerArray4 = matrix[1][1] * green2;
+			float greenPerArray5 = matrix[1][2] * green2;
+			float greenPerArray6 = matrix[1][3] * green2;				
+			float greenPerArray7 = matrix[2][1] * green3;
+			float greenPerArray8 = matrix[2][2] * green3;
+			float greenPerArray9 = matrix[2][3] * green3;
+
+			float resultGreen = greenPerArray1 + greenPerArray2 + greenPerArray3 + greenPerArray4 + greenPerArray5 + greenPerArray6 + greenPerArray7 + greenPerArray8 + greenPerArray9;
+			int totalGreen = (int)resultGreen;
+
+			int blue1 = color1.getBlue();
+			int blue2 = color2.getBlue();
+			int blue3 = color3.getBlue();
+			float bluePerArray1 = matrix[0][1] * blue1;
+			float bluePerArray2 = matrix[0][2] * blue1;
+			float bluePerArray3 = matrix[0][3] * blue1;
+			float bluePerArray4 = matrix[1][1] * blue2;
+			float bluePerArray5 = matrix[1][2] * blue2;
+			float bluePerArray6 = matrix[1][3] * blue2;				
+			float bluePerArray7 = matrix[2][1] * blue3;
+			float bluePerArray8 = matrix[2][2] * blue3;
+			float bluePerArray9 = matrix[2][3] * blue3;
+
+			float resultBlue = bluePerArray1 + bluePerArray2 + bluePerArray3 + bluePerArray4 + bluePerArray5 + bluePerArray6 + bluePerArray7 + bluePerArray8 + bluePerArray9;
+			int totalBlue = (int)resultBlue;
+			newImage.setRGB(i,j, new Color(totalRed, totalGreen , totalBlue).getRGB());
+			}
+		}
+	m.writeImage(newImage, "GetGudBlur", "jpg"); */	
+    } 
 
     public BufferedImage readImage(String pathname) {
 
