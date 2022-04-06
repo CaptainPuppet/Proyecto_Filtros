@@ -27,12 +27,17 @@ public class Model {
 	BufferedImage imagen = m.readImage("GitGud.jpg");
 	m.writeImage(imagen, "GittingGud", "jpg");
 
+	
 
 	int w = imagen.getWidth();
 	int h = imagen.getHeight();
 	
 	BufferedImage newImage = new BufferedImage(imagen.getWidth(),imagen.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 	
+	
+	
+	//gray filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -47,7 +52,10 @@ public class Model {
 	}
 
 	m.writeImage(newImage, "GetGud", "jpg");
-	
+	*/
+
+	//red filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -58,7 +66,10 @@ public class Model {
 	}
 
 	m.writeImage(newImage, "GetGudRed", "jpg");
-	
+	*/
+
+	//green filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -69,7 +80,10 @@ public class Model {
 	}
 	
 	m.writeImage(newImage, "GetGudGreen", "jpg");
-	
+	*/
+
+	//blue filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -80,7 +94,10 @@ public class Model {
 	}
 	
 	m.writeImage(newImage, "GetGudBlue", "jpg");
+	*/
 
+	//Sepia filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -162,7 +179,10 @@ public class Model {
 	}
 
 	m.writeImage(newImage, "GetGudSepia", "jpg");
+	*/
 
+	//High Contrast Filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -201,7 +221,10 @@ public class Model {
 	}
 
 	m.writeImage(newImage, "GetGudHC", "jpg");
+	*/
 
+	//Negative Filter
+	/*
 	for(int i = 0; i < w; i++){
 		for(int j = 0; j < h; j++){
                 	Color color = new Color(imagen.getRGB(i, j));
@@ -231,9 +254,8 @@ public class Model {
 		} 
 
 	m.writeImage(newImage, "GetGudNegative", "jpg");
-		
 	}
-	
+	/*
 	/*error
 	double[][] matrix = {{1, 2, 3},{4, 5, 6}, {7, 8, 9}};
 
@@ -323,8 +345,241 @@ public class Model {
 			newImage.setRGB(i,j, new Color(totalRed, totalGreen , totalBlue).getRGB());
 			}
 		}
-	m.writeImage(newImage, "GetGudBlur", "jpg"); */	
-    } 
+	m.writeImage(newImage, "GetGudBlur", "jpg"); */
+	
+	//BufferedImage afterImg = new BufferedImage(imagen.getWidth() * 2,imagen.getHeight() * 2, BufferedImage.TYPE_INT_ARGB);
+
+	//final AffineTransform at = AffineTransform.getScaleInstance(2.0, 2.0);
+	//final AffineTransformOp ato = new AffineTransformOp(afterImg, AffineTransformOp.TYPE_INT_ARGB);
+	//afterImg = imagen, afterImg;
+	//m.writeImage(afterImg, "GetGudIncreased", "jpg");
+
+	/*
+	double[][] Edgefilter = {{-1,  0,  1},{-2,  0,  2}, { -1,  0,  1}, {  1,  2,  1 }, {  0,  0,  0 }, { -1, -2, -1 }};
+	gray1 = 0;
+	gray2 = 0;
+	for(int i = 0; i < w; i++){
+		for(int j = 0; j < h; j++){
+			
+			
+			for(int x = 0; x < Edgefilter.length; x++)
+			{
+				for(int y = 0; y < Edgefilter.length; y++)
+				{
+					Color gray = new Color(imagen.getRGB(i+(x-1), j+(y-1)));
+					
+				}
+
+				gray1 += gray * Edgefilter[x][y];
+				int magnitude = 255 - (gray1 * gray1 + gray2 * gray2); 
+			}
+			newImage.setRGB(i,j, new Color(magnitude, magnitude).getRGB());
+		}
+
+	}
+	*/
+	
+	//edge
+	/*error	
+	Color [][] ColorMatrix = new Color[w][h]; 
+	float [][] kernelB = {{0f, 1f, 0f}, {1f, -4f, 1f}, {0f, 1f, 0f}};
+	float acR = 0f;
+	float acG = 0f;
+	float acB = 0f;
+
+	BufferedImage edgefiedImage = new BufferedImage(imagen.getWidth(), imagen.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
+	
+	for (int x1 = 0; x1 <= w; x1++) 
+	{
+        for (int y1 = 0; y1 <= h; y1++)
+		{        
+				for(int x2 = 0; x2 < 3; x2++)
+				{
+					for(int y2 = 0; y2 < 3; y2++)
+					{
+								ColorMatrix[w][h] = new Color(imagen.getRGB(x1,y1));			
+							
+								Color matrizC = ColorMatrix[x1][y1];
+						
+
+									int rB = (int) kernelB[x2][y2] * matrizC.getRed();
+									int gB = (int) kernelB[x2][y2] * matrizC.getGreen();
+									int bB = (int) kernelB[x2][y2] * matrizC.getBlue();
+									acR += rB;   
+									acG += gB;   
+									acB += bB;
+
+									if(rB < 0)  
+									{
+										rB = 0;
+									}       
+						
+									if(gB < 0)
+									{
+										gB = 0;
+									}         
+						
+									if(bB < 0)
+									{
+										bB = 0;
+									}
+
+									if(rB > 255)  
+									{
+										rB = 255;
+									}       
+									
+									if(gB > 255)
+									{
+										gB = 255;
+									}         
+									
+									if(bB > 255)
+									{
+										bB = 255;
+									}
+
+									edgefiedImage.setRGB(x1,y1, new Color(rB, gB, bB).getRGB());
+							
+						
+						
+					}
+				}          
+        }
+    }
+	
+
+	m.writeImage(edgefiedImage, "GetGudEdge", "jpg");
+	/*
+
+	//sharpening
+	/*
+	double [][] sharpedImageM = {{0f, -0.5f, 0f}, {-0.5f, 3f, -0.5f}, {0f, -0.5f, 0f}};
+	BufferedImage sharpenedImage = new BufferedImage(imagen.getWidth(), imagen.getHeight(), BufferedImage.TYPE_3BYTE_BGR); 
+	int[] container = {0,0,0}; 
+	for(int i = 0; i < w; i++)
+	{
+		for(int j = 0; j < h; j++)
+		{
+			Color ogColor = new Color(imagen.getRGB(i,j));
+			
+			for(int x = 0; x < sharpedImageM.length; x++)
+			{
+				for(int y = 0; y < sharpedImageM.length; y++)
+				{
+					Color newColor = new Color(sharpenedImage.getRGB(x, y));
+					
+					container[0] += newColor.getRed() * sharpedImageM[x][y]; 
+					container[1] += newColor.getGreen() * sharpedImageM[x][y];  
+					container[2] += newColor.getBlue() * sharpedImageM[x][y];
+
+					if (container[0] > 255)
+                    		container[0] = 255;
+                	else
+                    		container[0] = 0;
+
+					if (container[1] > 255)
+                    		container[1] = 255;
+                	else
+                    		container[1] = 0;
+
+					if (container[2] > 255)
+                    		container[2] = 255;
+                	else
+                    		container[2] = 0;
+
+					sharpenedImage.setRGB(i,j, new Color(container[0], container[1], container[2]).getRGB());
+				}	
+			}
+		}
+
+	}
+
+	m.writeImage(sharpenedImage, "GetGudSharpened", "jpg");
+	*/
+
+
+	/* error
+	double[][] kernel = {{0,0,0}, {0,1,0}, {0,0,0}};
+	double[][] edgeFilter = {{-1,-1,-1}, {-1,8,-1}, {-1,-1,-1}};
+
+	Color gray = new Color(imagen.getRGB(i+(x-1), j+(y-1)));
+
+	edgeFilter = (1*w + (8*h * gray) / 9);
+
+	newImage.setRGB(w,h, new Color(edgeFilter, edgeFilter).getRGB());
+	*/
+
+	//Scale Large
+	BufferedImage LargeSizeableImage = new BufferedImage(imagen.getWidth() * 2 , imagen.getHeight() * 2 , BufferedImage.TYPE_3BYTE_BGR);
+	for(int i = 0; i < w; i++)
+	{
+		for(int j = 0; j < h; j++)
+		{
+			Color Oc = new Color(imagen.getRGB(i,j));
+
+			int i2 = i * 2;
+			int j2 = j * 2;
+			
+			//Color Nc = new Color(imagen.getRGB(i2 , j2));
+			/*SLacR = Nc.getRed();
+			SLacG = Nc.getGreen();
+			SLacB = Nc.getBlue();
+			LargeSizeableImage.setRGB(i,j, new Color(SLacR, SLacG, SLacB).getRGB());*/
+
+			LargeSizeableImage.setRGB((i2),(j2), Oc.getRGB());
+			LargeSizeableImage.setRGB((i2),(j2)+1, Oc.getRGB());
+            LargeSizeableImage.setRGB((i2)+1,(j2),  Oc.getRGB());
+            LargeSizeableImage.setRGB((i2)+1,(j2)+1, Oc.getRGB());
+		}
+	}
+	m.writeImage(LargeSizeableImage, "GetGudLS", "jpg");
+
+
+	//Scale Small
+	BufferedImage SmallSizeableImage = new BufferedImage(imagen.getWidth() / 2, imagen.getHeight() / 2, BufferedImage.TYPE_3BYTE_BGR);
+	float rContainer = 0f;
+	float gContainer = 0f;
+	float bContainer = 0f;
+
+
+	for(int i = 0; i < w; i++)
+	{
+		for(int j = 0; j < h; j++)
+		{
+			Color Oc = new Color(imagen.getRGB(i ,j ));
+
+			int i2 = 2 * i;
+			int j2 = 2 * j;
+			
+			//Color Nc = new Color(imagen.getRGB(i2 , j2));
+			/*SLacR = Nc.getRed();
+			SLacG = Nc.getGreen();
+			SLacB = Nc.getBlue();
+			LargeSizeableImage.setRGB(i,j, new Color(SLacR, SLacG, SLacB).getRGB());*/
+
+			if(i2-1 >= 0 && i2+1 < w)
+			{
+                if(j2-1 >= 0 && j2+1 < h)
+				{
+					Color color1 = new Color(imagen.getRGB((i2),(j2)));
+					Color color2 = new Color(imagen.getRGB((i2),(j2)+1));
+					Color color3 = new Color(imagen.getRGB((i2)+1,(j2)));
+					Color color4 = new Color(imagen.getRGB((i2)+1,(j2)+1));
+
+					rContainer = (color1.getRed() + color2.getRed() + color3.getRed()+ color4.getRed()) / 4f;
+        			gContainer = (color1.getGreen() + color2.getGreen() + color3.getGreen()+ color4.getGreen()) / 4f;
+        			bContainer = (color1.getBlue() + color2.getBlue() + color3.getBlue() + color4.getBlue()) / 4f;
+
+					Color totalColor = new Color((int) rContainer, (int) gContainer, (int) bContainer);
+					SmallSizeableImage.setRGB(i2 / 2,j2 / 2,totalColor.getRGB());
+				}
+			}
+		}
+	}
+	m.writeImage(SmallSizeableImage, "GetGudSS", "jpg");
+} 
+
 
     public BufferedImage readImage(String pathname) {
 
